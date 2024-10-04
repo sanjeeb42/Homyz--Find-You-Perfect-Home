@@ -14,22 +14,20 @@ const Residencies = () => {
         </div>
 
         <Swiper {...sliderSettings}>
-            {
-                data.map((card,i)=>(
-                    <SwiperSlide key={i}>
-                        <div className="flexColStart r-card">
-                          <img src={card.image} alt="" />
-                          <span className="secondaryText r-price">
-                            <span style={{color:"orange"}}>$</span>
-                            <span>{card.price}</span>
-                          </span>
-                            <span className="primaryText">{card.name}</span>
-                            <span className="secondaryText">{card.detail}</span>
-
-                        </div>
-                    </SwiperSlide>
-                ))
-            }
+          <SliderButtons />
+          {data.map((card, i) => (
+            <SwiperSlide key={i}>
+              <div className="flexColStart r-card">
+                <img src={card.image} alt="" />
+                <span className="secondaryText r-price">
+                  <span style={{ color: "orange" }}>$</span>
+                  <span>{card.price}</span>
+                </span>
+                <span className="primaryText">{card.name}</span>
+                <span className="secondaryText">{card.detail}</span>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>
@@ -37,3 +35,13 @@ const Residencies = () => {
 };
 
 export default Residencies;
+
+const SliderButtons = () => {
+  const swiper = useSwiper();
+  return (
+    <div className="flexCenter r-buttons">
+      <button onClick={() => swiper.slidePrev()}>&lt;</button>
+      <button onClick={()=>swiper.slideNext()}>&gt;</button>
+    </div>
+  );
+};
